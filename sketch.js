@@ -33,6 +33,7 @@ function setup() {
    createCanvas(400, 400);
 
    console.log("debugging...");
+      //best way to animate ./../...?
 }
 
 
