@@ -11,6 +11,8 @@
  * then do the rest of this project (declearing + testing) in sketch.
  * I have copied my class notes, but we can use Professor Harris's
  * if preferred/mine break.
+ * 
+ * TODO: use functions to break up all this testing mess
  */
 
 "use strict"; //catch some common coding errors
