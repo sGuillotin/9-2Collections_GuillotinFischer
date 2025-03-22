@@ -36,6 +36,9 @@ function setup() {
       //best way to animate ./../...?
 }
 
+function arrayTester(){
+
+}
 
 /**
  * function to hold the setup() code for all
