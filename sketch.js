@@ -22,8 +22,8 @@
 const sayMap = new Map();
 //sets:
 let newSet;
-let sigmaSet;
-let alphaArray;
+let set;
+let array;
 
 
 /**
@@ -241,26 +241,26 @@ function setTester(){
    /**
     * challenge 1
     */
-   sigmaSet = new Set();
-   alphaArray = new Array();
+   set = new Set();
+   array = new Array();
 
-   while(sigmaSet.size < 20){
+   while(set.size < 20){
       let randInt = round(random(20));
-      sigmaSet.add(randInt);
-      alphaArray.push(randInt);
+      set.add(randInt);
+      array.push(randInt);
    }
 
    //print contents of both
-   console.log("set", sigmaSet);
-   console.log("array", alphaArray);
+   console.log("set", set);
+   console.log("array", array);
    
    //safely clear both data structures
-   sigmaSet.clear();
-   alphaArray.splice(0);
+   set.clear();
+   array.splice(0);
 
    //print contents of both again
-   console.log("set", sigmaSet);
-   console.log("array", alphaArray);
+   console.log("set", set);
+   console.log("array", array);
 
 
    //Resumed from after break!
