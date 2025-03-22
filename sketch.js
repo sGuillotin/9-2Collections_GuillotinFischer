@@ -32,10 +32,13 @@ let array;
 function setup() {
    createCanvas(400, 400);
 
-   console.log("debugging...");
-      //best way to animate ./../...?
+   arrayTester();
 }
 
+/**
+ * function to hold the setup() code for all
+ * Array actions
+ */
 function arrayTester(){
 
 }
