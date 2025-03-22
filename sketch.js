@@ -16,7 +16,7 @@
  * 
  * Work structure: Autumn will take Arrays,
  * Sébastien will start with Objects columns
- * alternate columns
+ * alternate columns.
  */
 
 "use strict"; //catch some common coding errors
@@ -36,7 +36,7 @@ let alphaArray;
 function setup() {
    createCanvas(400, 400);
 
-   
+
 }
 
 
