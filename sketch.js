@@ -13,6 +13,10 @@
  * if preferred/mine break.
  * 
  * TODO: use functions to break up all this testing mess
+ * 
+ * Work structure: Autumn will take Arrays,
+ * Sébastien will start with Objects columns
+ * alternate columns
  */
 
 "use strict"; //catch some common coding errors
@@ -32,8 +36,7 @@ let alphaArray;
 function setup() {
    createCanvas(400, 400);
 
-   console.log("debugging...");
-      //best way to animate ./../...?
+   
 }
 
 
