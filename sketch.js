@@ -24,9 +24,11 @@
 /* Global variables */
 //objects
 let e30Test = {};
-let e30 = {"Cylinders":"4 or 6", "Seating":"4-door or 2-door",
-   "Drivetrain":"AWD", "Production years":"1982-1994",
-   "Can be Convertible?":true, "Number of wheels":4};
+//for reference, the BMW e30 is a sports car model
+let e30 = {Cylinders : "4 or 6", Seating : "4-door or 2-door",
+   Drivetrain : "AWD", "Production years" : "1982-1994",
+   "Can be Convertible" : true, "Number of wheels" : 4};
+   //properties can be declared with or without ""
 //maps:
 const sayMap = new Map();
 //sets:
@@ -40,7 +42,24 @@ let array;
  */
 function setup() {
    createCanvas(400, 400);
+
+   e30.Tires = "Summer tires";
+   e30["Color of Trim"] = "Puke Green";
+   console.log(e30.Tires);
+   console.log(e30["Color of Trim"]);
+   console.log(e30["Tires"]);
+   console.log(e30.ColorofTrim); //notice how "Tires" is a one-word string that can be
+   //refernced using dot or [] notation, but because color of trim uses a reserve word "of"
+   //and, more importantly, because color of trim is not one word and uses spaces,
+   //color of trim must be referenced using [] bracket notation -SG
    
+   //test if some of the values/properties are defined or not
+   console.log(e30.Cylinders !== undefined); //checking IS DEFINED
+   //check if propterty/item is included in object properties
+   //TODO finish after this point
+   // let testBool = e30.Cylinders !== undefined;
+   // console.log(e30)
+
 }
 
 
