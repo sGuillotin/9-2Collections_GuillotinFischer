@@ -22,6 +22,11 @@
 "use strict"; //catch some common coding errors
 
 /* Global variables */
+//objects
+let e30Test = {};
+let e30 = {"Cylinders":"4 or 6", "Seating":"4-door or 2-door",
+   "Drivetrain":"AWD", "Production years":"1982-1994",
+   "Can be Convertible?":true, "Number of wheels":4};
 //maps:
 const sayMap = new Map();
 //sets:
@@ -35,8 +40,15 @@ let array;
  */
 function setup() {
    createCanvas(400, 400);
+   
+}
 
-   arrayTester();
+
+/**
+ * function to hold the setup() code for all
+ * Object actions
+ */
+function objectTester(){
 
 }
 
