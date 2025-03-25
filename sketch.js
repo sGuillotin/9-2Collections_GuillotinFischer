@@ -49,6 +49,7 @@ let musicQueue;
 function setup() {
    createCanvas(400, 400);
    
+   mapTester();
 }
 
 
@@ -238,6 +239,20 @@ function mapTester(){
    //Iterator or array of values
    mapIt = ageMap.values();
    console.log("Map Values:", mapIt);
+
+   console.log("**BRIEF INTERMISSION FOR ITERATOR TESTING");
+
+   //Array.from
+   let array = Array.from(mapIt);
+   console.log("Array from map iterator:", array);
+
+   //Loop over all
+   console.log("Iterate over iterator array:");
+   for(let item of array){
+      console.log(item);
+   }
+
+   console.log("**MORE MAP TESTING**");
 
    //Array.from
    let mapArray = Array.from(ageMap);
