@@ -27,7 +27,8 @@ const sayMap = new Map();
 //sets:
 let newSet;
 let set;
-let array;
+//init array variable
+let creatureArray;
 
 
 /**
@@ -41,11 +42,90 @@ function setup() {
 }
 
 /**
- * function to hold the setup() code for all
- * Array actions
+ * Autumn Fischer
+ * ARRAY FUNCTIONS AND METHODS TESTING
  */
 function arrayTester(){
+   //Create/ construct empty
+   creatureArray = [];
+   console.log("Created empty array:", creatureArray);
 
+   //Create/ construct with contents
+   creatureArray = ["crab", "fish", "cow", "turtle", "stingray", "tiger", "frog"];
+   console.log("Filled the array with creatures:", creatureArray);
+
+   //Set/ add value
+   creatureArray[1] = "dog";
+   console.log("Set the second item (index 1) to dog:", creatureArray);
+
+   creatureArray.push("duck");
+   console.log("Added a duck to the end of the array:", creatureArray);
+
+   creatureArray.unshift("t-rex", "octopus");
+   console.log("Added a t-rex and an octopus to the beginning of the array:", creatureArray);
+
+   creatureArray.splice(6, 0, "goat", "bunny");
+   console.log("Added a goat and a bunny at index 6 of the array:", creatureArray);
+
+   //Retrieve value 
+   let animal = creatureArray[4];
+   console.log("Retrived the fifth item (index 4):", animal);
+
+   //Item included?
+   let animalBool = creatureArray.includes("turtle");
+   console.log("Testing to see if the array includes the animal 'turtle':", animalBool);
+
+   //Remove item
+   let removeCreature = creatureArray.pop();
+   console.log("Removed the last item of the array:", removeCreature, creatureArray);
+
+   let removeAnimal = creatureArray.shift();
+   console.log("Removed the first item of the array:", removeAnimal, creatureArray);
+
+   creatureArray.splice(3, 2);
+   console.log("Removed two items starting at index 3", creatureArray);
+
+   //Iterator or array of entries
+   let arrayEntries = creatureArray.entries();
+   console.log("Array Entries:", arrayEntries);
+
+   //Iterator or array of keys
+   let arrayKeys = creatureArray.keys();
+   console.log("Array Keys:", arrayKeys);
+
+   //Iterator or array of values
+   let arrayValues = creatureArray.values();
+   console.log("Array Values:", arrayValues);
+
+   //Array.from
+   let animalArray = Array.from(creatureArray);
+   console.log("Array.from:", animalArray);
+
+   //Copy all to fresh address
+   let newArray = animalArray.slice();
+   console.log("Slice the array to a new variable:", newArray);
+
+   let evenNewerArray = Array.from(newArray);
+   console.log("Array.from to use a new variable name:", evenNewerArray);
+
+   //Loop over all
+   console.log("For loop to iterate:");
+   for(let i=0; i<creatureArray.length; i++){
+      console.log(creatureArray[i]);
+   }
+
+   console.log("For of loop to iterate:");
+   for(let creature of creatureArray){
+      console.log(creature);
+   }
+
+   //How many?
+   let arrayLength = creatureArray.length;
+   console.log("Array Length:", arrayLength);
+
+   //Empty all contents
+   creatureArray.splice(0);
+   console.log("Empty the array:", creatureArray);
 }
 
 /**
