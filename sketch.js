@@ -16,7 +16,7 @@
  * 
  * Work structure:
  * Autumn- Array, Map, Iterator, DIY Queue
- * Sébastien- Object(X), Set(X), and DIY Stack
+ * Sébastien- Object, Set, and DIY Stack
  */
 
 "use strict"; //catch some common coding errors
@@ -34,6 +34,9 @@ let e30 = {Cylinders : "4 or 6", Seating : "4-door or 2-door",
 const sayMap = new Map();
 //sets:
 let pets;
+//stacks
+let stack1;
+let clothesStack;
 
 //AUTUMN VARIABLES
 //init array variable
@@ -49,6 +52,7 @@ let iterator;
 function setup() {
    createCanvas(400, 400);
    
+   setTester();
 }
 
 
@@ -129,7 +133,6 @@ function arrayTester(){
  * Sebastien Guillotin
  * function to hold the setup() code for all
  * Object actions
- * done! -SG
  */
 function objectTester(){
    e30.Tires = "Summer tires";
@@ -269,37 +272,52 @@ function mapTester(){
 /**
  * Sebastien Guillotin
  * function to hold the setup() code for all
- * Set actions - copied from my class notes
- * these notes shouldn't have gaps
- * started - SG
+ * Set actions
  */
 function setTester(){
+   //Create/construct empty
    let set = new Set();
+
+   //Create/construct with contents
    pets = new Set(["harry", "radar", 42, 13, 107]);
+
+   //Set/add value
    pets.add(45);
    pets.add(45);
    pets.add(45);   //only adds one 45- no dupes in sets
    console.log("pets", pets);
+
+   //Item included?
    //does pets contain radar?
    console.log("pets.has('radar')?", pets.has("radar")); //should return true
+   
+   //Remove item
    //remove 45 from pets
-   // pets.delete(45);
+   let deleted = pets.delete(45);
    //use .delete with console.log to confirm if the value was deleted AND
    //delete it at the same time
-   console.log("deleted?", pets.delete(45));
+   console.log("deleted 45?", deleted);
+
+   //Array.from
    let petsArr = Array.from(pets); //create an array (allows dupes) from the pets set
    console.log("petsArr", petsArr);
 
+   //Copy all to fresh address
    //create a new pets set with the same elements/contents
    let pets2 = new Set(Array.from(pets));
-   console.log("new set (pets2):")
+   console.log("new set (pets2):");
+
+   //Loop over all
    for(let item of pets2){ //loop over each item in Set
       console.log(" ", item); //print the item to the console
    }
 
+   //How many?
    //how many elements in pets2?
    console.log("elements in pets2:", pets2.size);
    //.size or .length- notice diff!!
+
+   //Empty all contents
    //empty pets2 :(
    pets2.clear();
    console.log("elements in pets2:", pets2.size); //confirm
@@ -307,75 +325,46 @@ function setTester(){
 }
 
 /**
+ * Sébastien Guillotin
  * function to hold the setup() code for all
  * Stack actions
  */
 function stackTester(){
-   let testStack = new Stack();
-   console.log("empty stack?", testStack);
-   testStack = new Stack([3,4, 5,6,78]); //how does this affect
-   // first instance of testStack?
-   // references vs addresses...?
-   console.log("num stack?", testStack);
-   //destructive?
-   const testArr = [4,5,6]; //make an arr that is its own var
-   const safeStack = new Stack(testArr); //make a stack from this array
-   //pop a val from safe stack
-   safeStack.pop();
-   console.log("testArr", testArr, "\nsafeStack", safeStack);
-   //testArr is safe! nice
+   console.log("**STAACK TESTING**");
 
+   //Create/construct empty
+   stack1 = new Stack();
+   console.log("empty stack?", stack1);
 
-   //test .pop
-   console.log("testStack.size", testStack.size);
-   console.log("pop stack", testStack.pop(), testStack.size);
-   console.log("pop stack", testStack.pop(), testStack.size);
-   console.log("pop stack", testStack.pop(), testStack.size);
+   //Create/construct with contents
+   clothesStack = new Stack(["green shirt", "belt", "questionable shirt", "jeans", "dirty socks"]);
+   console.log("num stack?", clothesStack);
 
+   //Set/add value - adds to top of stack
+   clothesStack.push("band t-shirt");
 
-   //test .push
-   testStack.push("hey");
-   console.log(testStack, testStack.size);
-   testStack.push("ho");
-   console.log(testStack, testStack.size);
-   testStack.push("hooray");
-   console.log(testStack, testStack.size);
-   console.log("pop stack", testStack.pop(), testStack.size);
+   //Retrieve value - views top of stack
+   let topOfStack = clothesStack.peek();
+   console.log(topOfStack);
+   //TODO change these to save as a variable and then print it (above is complete)
 
+   //Item included?
+   let includesBelt = clothesStack.includes("belt");
+   console.log("includes belt:", includesBelt);
 
-   //test .peek
-   testStack.push("howdy");
-   console.log("pushed hody. peek?", testStack.peek());
-   //pop everything from testStack-
-   //no probs with empty stack?
-   testStack.clear();
-   console.log("empty stack peek?", testStack.peek());
+   //Remove item - from top of staack
+   let removedItem = clothesStack.pop();
+   console.log("removed item:", removedItem);
+   
+   //How many?
+   //number of elements in stack
+   let clothesSize = clothesStack.size;
+   console.log("number of elements in clothes stack:", clothesSize);
 
-
-   //test .includes
-   //false if not included?
-   console.log("testStack.includes('45')", testStack.includes("45"));
-   console.log("pushing hi, hooray, ho (separately)");
-   // testStack.push("hi", "hooray, "ho");
-   testStack.push("hi");
-   testStack.push("hooray");
-   testStack.push("ho");
-   console.log("pushed hi, hooray, ho?", testStack);
-   console.log(".includes('hooray')", testStack.includes("hooray"));
-
-
-   //test .clear
-   console.log("testStack.clear()");
-   testStack.clear();
-   console.log("cleared stack?", testStack);
-
-
-   //testing toString
-   testStack.push("hi")
-   testStack.push("hooray");
-   testStack.push("ho");
-   console.log("toString after pushing hi, hooray, ho:\n",
-      testStack.toString());
+   //Empty all contents of the stack
+   //laundry day!
+   clothesStack.clear();
+   console.log("Laundry day! Clothes stack size:", clothesStack.size);
 }
 
 /**
