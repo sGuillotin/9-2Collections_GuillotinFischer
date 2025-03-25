@@ -93,22 +93,6 @@ function arrayTester(){
    creatureArray.splice(3, 2);
    console.log("Removed two items starting at index 3", creatureArray);
 
-   //Iterator or array of entries
-   let arrayIt = creatureArray.entries();
-   console.log("Array Entries:", arrayIt);
-
-   //Iterator or array of keys
-   arrayIt = creatureArray.keys();
-   console.log("Array Keys:", arrayIt);
-
-   //Iterator or array of values
-   arrayIt = creatureArray.values();
-   console.log("Array Values:", arrayIt);
-
-   //Array.from
-   let animalArray = Array.from(creatureArray);
-   console.log("Array.from:", animalArray);
-
    //Copy all to fresh address
    let newArray = animalArray.slice();
    console.log("Slice the array to a new variable:", newArray);
