@@ -33,8 +33,8 @@ let set;
 let creatureArray;
 //init map variable
 let ageMap;
-//iterator
-let iterator;
+//init queue variable
+let musicQueue;
 
 /**
  * setup: run all tester functions here
@@ -45,6 +45,8 @@ function setup() {
    arrayTester();
 
    mapTester();
+
+   queueTester();
 }
 
 /**
@@ -94,7 +96,7 @@ function arrayTester(){
    console.log("Removed two items starting at index 3", creatureArray);
 
    //Copy all to fresh address
-   let newArray = animalArray.slice();
+   let newArray = creatureArray.slice();
    console.log("Slice the array to a new variable:", newArray);
 
    let evenNewerArray = Array.from(newArray);
@@ -192,6 +194,46 @@ function mapTester(){
 }
 
 /**
+ * Autumn Fischer
+ * QUEUE FUNCTIONS AND METHODS TESTING
+ */
+function queueTester(){
+   console.log("**QUEUE TESTING**");
+
+   //Create/ construct empty
+   musicQueue = new Queue();
+   console.log("Created empty queue:", musicQueue);
+
+   //Create/ construct with contents
+   musicQueue = new Queue(["Too Sweet", "Sweet Child O' Mine", "Back in Black", "Modern Day Cain", "Mad IQs", "Feel Good Inc."]);
+   console.log("Filled the queue with song names: "+ musicQueue);
+
+   //Set/ add value
+   musicQueue.enqueue("Are You Gonna Be My Girl");
+   console.log("Added a song to the queue:", musicQueue);
+
+   //Retrieve Value
+   let nextSong = musicQueue.peek();
+   console.log("Peek at the first item in the queue:", nextSong);
+
+   //Item included?
+   let queueSong = musicQueue.includes("Too Sweet");
+   console.log("Testing to see if 'Too Sweet' is in the queue:", queueSong);
+
+   //Remove item
+   let removedSong = musicQueue.dequeue("Back in Black");
+   console.log("Removed the song", removedSong, "from the queue:", musicQueue);
+
+   //How Many?
+   let queueSize = musicQueue.size;
+   console.log("Queue length", queueSize);
+
+   //Empty all contents
+   musicQueue.clear();
+   console.log("Empty the queue:", musicQueue);
+}
+
+/**
  * function to hold the setup() code for all
  * Stack actions
  */
@@ -261,72 +303,6 @@ function stackTester(){
    testStack.push("ho");
    console.log("toString after pushing hi, hooray, ho:\n",
       testStack.toString());
-}
-
-/**
- * function to hold the setup() code for all
- * Queue actions
- */
-function queueTester(){
-   let testQueue = new Queue();  //wait, why don't we always do this?
-   console.log("empty Queue?", testQueue);
-   testQueue = new Queue([3,4, 5,6,78]); //how does this affect
-   // first instance of testQueue?
-   // references vs addresses...?
-   console.log("num Queue?", testQueue);
-   //destructive?
-   const testArr = [4,5,6]; //make an arr that is its own var
-   const safeQueue = new Queue(testArr); //make a Queue from this array
-   //dequeue a val from safe Queue
-   safeQueue.dequeue();
-   console.log("testArr", testArr, "\nsafeQueue", safeQueue);
-   //testArr is safe! nice
-
-   //test .dequeue
-   console.log("testQueue.size", testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
-
-   //test .enqueue
-   testQueue.enqueue("hey");
-   console.log(testQueue, testQueue.size);
-   testQueue.enqueue("ho");
-   console.log(testQueue, testQueue.size);
-   testQueue.enqueue("hooray");
-   console.log(testQueue, testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
-
-   //test .peek
-   testQueue.enqueue("howdy");
-   console.log("enqueueed hody. peek?", testQueue.peek());
-   //dequeue everything from testQueue-
-   //no probs with empty Queue?
-   testQueue.clear();
-   console.log("empty Queue peek?", testQueue.peek());
-
-   //test .includes
-   //false if not included?
-   console.log("testQueue.includes('45')", testQueue.includes("45"));
-   console.log("enqueueing hi, hooray, ho (separately)");
-   // testQueue.enqueue("hi", "hooray, "ho");
-   testQueue.enqueue("hi");
-   testQueue.enqueue("hooray");
-   testQueue.enqueue("ho");
-   console.log("enqueueed hi, hooray, ho?", testQueue);
-   console.log(".includes('hooray')", testQueue.includes("hooray"));
-
-   //test .clear
-   console.log("testQueue.clear()");
-   testQueue.clear();
-   console.log("cleared Queue?", testQueue);
-
-   //testing toString
-   testQueue.enqueue("hi")
-   testQueue.enqueue("hooray");
-   testQueue.enqueue("ho");
-   console.log("toString after enqueueing hi, hooray, ho:\n",
-      testQueue.toString());
 }
 
 /**
