@@ -53,76 +53,6 @@ function setup() {
 
 
 /**
- * Sebastien Guillotin
- * function to hold the setup() code for all
- * Object actions
- * done! -SG
- */
-function objectTester(){
-   e30.Tires = "Summer tires";
-   e30["Color of Trim"] = "Puke Green";
-   console.log(e30.Tires);
-   console.log("e30['Color of Trim']: ", e30["Color of Trim"]);
-   console.log(e30["Tires"]);
-   console.log("e30.ColorofTrim (should be undefined): ", e30.ColorofTrim); //notice how "Tires" is a one-word string that can be
-   //refernced using dot or [] notation, but because color of trim uses a reserve word "of"
-   //and, more importantly, because color of trim is not one word and uses spaces,
-   //color of trim must be referenced using [] bracket notation -SG
-   
-   //test if some of the values/properties are defined or not
-   console.log(e30.Cylinders !== undefined); //checking IS DEFINED
-   //check if propterty/item is included in object properties
-   // let testBool = e30.Cylinders !== undefined;
-   console.log(e30["Tires"] !== undefined); //checking IS DEFINED
-   //note that here Tires has to be in ""
-   //"" always for [] notation
-   //"" for strings > 1 word in . notation
-   //what about non-string keys? -just curious
-   delete e30.Tires;
-   console.log("Tires property removed? (undefined means yes!)", e30.Tires);
-   delete e30["Color of Trim"];
-   console.log("Trim property removed? (undefined means yes!)", e30["Color of Trim"]);
-   //both properties have been removed from the car
-
-   let e30Arr = Object.entries(e30);
-   //stores the array of all key:value pairs of e30 (returned by Obj.entries())
-   //Object.entries returns an array
-   console.log("e30Arr:", e30Arr);
-   console.log(Object.entries(e30));
-   //notice how these are the same array
-   //print all properties of e30
-   console.log("Properties of e30:", Object.keys(e30));
-   console.log("Values of e30:", Object.values(e30));
-   //copy everything about e30 to a new address, m3
-   let m3 = {};
-   for(let pair in e30){  //looping through each key:value pair?
-      // console.log(e30[pair]); //value
-      // console.log("pair", pair); //property (key)
-      m3[pair] = e30[pair]; //copies each key/value pair to m3
-      //any add'tl declarations? (i.e. m3 = new etc...)
-      //just need let m3 = {}; outside of loop
-   }
-   //console.log("m3:", m3); //created successfully!
-
-   //loop over all pairs in m3
-   console.log("All pairs in m3:");
-   for(let pair in m3){
-      console.log(" ", pair +" : "+ m3[pair]); //print key:value pair to console
-   }
-
-   //how many properties in m3?
-   //find length of array of kay:value pairs
-   console.log("Number of properties stored by m3:", Object.entries(m3).length);
-
-   //empty m3 object of all contents
-   //scrap the m3 (remove all property:value pairs)
-   for(let pair in m3){  //for every pair
-      delete m3[pair];  //deletes the property (related value no longer stored either)
-   }
-   console.log("m3 empty?", m3); //m3 has been scrapped
-}
-
-/**
  * Autumn Fischer
  * ARRAY FUNCTIONS AND METHODS TESTING
  */
@@ -196,6 +126,76 @@ function arrayTester(){
 }
 
 /**
+ * Sebastien Guillotin
+ * function to hold the setup() code for all
+ * Object actions
+ * done! -SG
+ */
+function objectTester(){
+   e30.Tires = "Summer tires";
+   e30["Color of Trim"] = "Puke Green";
+   console.log(e30.Tires);
+   console.log("e30['Color of Trim']: ", e30["Color of Trim"]);
+   console.log(e30["Tires"]);
+   console.log("e30.ColorofTrim (should be undefined): ", e30.ColorofTrim); //notice how "Tires" is a one-word string that can be
+   //refernced using dot or [] notation, but because color of trim uses a reserve word "of"
+   //and, more importantly, because color of trim is not one word and uses spaces,
+   //color of trim must be referenced using [] bracket notation -SG
+   
+   //test if some of the values/properties are defined or not
+   console.log(e30.Cylinders !== undefined); //checking IS DEFINED
+   //check if propterty/item is included in object properties
+   // let testBool = e30.Cylinders !== undefined;
+   console.log(e30["Tires"] !== undefined); //checking IS DEFINED
+   //note that here Tires has to be in ""
+   //"" always for [] notation
+   //"" for strings > 1 word in . notation
+   //what about non-string keys? -just curious
+   delete e30.Tires;
+   console.log("Tires property removed? (undefined means yes!)", e30.Tires);
+   delete e30["Color of Trim"];
+   console.log("Trim property removed? (undefined means yes!)", e30["Color of Trim"]);
+   //both properties have been removed from the car
+
+   let e30Arr = Object.entries(e30);
+   //stores the array of all key:value pairs of e30 (returned by Obj.entries())
+   //Object.entries returns an array
+   console.log("e30Arr:", e30Arr);
+   console.log(Object.entries(e30));
+   //notice how these are the same array
+   //print all properties of e30
+   console.log("Properties of e30:", Object.keys(e30));
+   console.log("Values of e30:", Object.values(e30));
+   //copy everything about e30 to a new address, m3
+   let m3 = {};
+   for(let pair in e30){  //looping through each key:value pair?
+      // console.log(e30[pair]); //value
+      // console.log("pair", pair); //property (key)
+      m3[pair] = e30[pair]; //copies each key/value pair to m3
+      //any add'tl declarations? (i.e. m3 = new etc...)
+      //just need let m3 = {}; outside of loop
+   }
+   //console.log("m3:", m3); //created successfully!
+
+   //loop over all pairs in m3
+   console.log("All pairs in m3:");
+   for(let pair in m3){
+      console.log(" ", pair +" : "+ m3[pair]); //print key:value pair to console
+   }
+
+   //how many properties in m3?
+   //find length of array of kay:value pairs
+   console.log("Number of properties stored by m3:", Object.entries(m3).length);
+
+   //empty m3 object of all contents
+   //scrap the m3 (remove all property:value pairs)
+   for(let pair in m3){  //for every pair
+      delete m3[pair];  //deletes the property (related value no longer stored either)
+   }
+   console.log("m3 empty?", m3); //m3 has been scrapped
+}
+
+/**
  Autumn Fischer
  MAP FUNCTIONS AND METHODS TESTING
  */
@@ -264,6 +264,46 @@ function mapTester(){
    //Empty all contents
    ageMap.clear();
    console.log("Empty the map:", ageMap);
+}
+
+/**
+ * Sebastien Guillotin
+ * function to hold the setup() code for all
+ * Set actions - copied from my class notes
+ * these notes shouldn't have gaps
+ * started - SG
+ */
+function setTester(){
+   let set = new Set();
+   pets = new Set(["harry", "radar", 42, 13, 107]);
+   pets.add(45);
+   pets.add(45);
+   pets.add(45);   //only adds one 45- no dupes in sets
+   console.log("pets", pets);
+   //does pets contain radar?
+   console.log("pets.has('radar')?", pets.has("radar")); //should return true
+   //remove 45 from pets
+   // pets.delete(45);
+   //use .delete with console.log to confirm if the value was deleted AND
+   //delete it at the same time
+   console.log("deleted?", pets.delete(45));
+   let petsArr = Array.from(pets); //create an array (allows dupes) from the pets set
+   console.log("petsArr", petsArr);
+
+   //create a new pets set with the same elements/contents
+   let pets2 = new Set(Array.from(pets));
+   console.log("new set (pets2):")
+   for(let item of pets2){ //loop over each item in Set
+      console.log(" ", item); //print the item to the console
+   }
+
+   //how many elements in pets2?
+   console.log("elements in pets2:", pets2.size);
+   //.size or .length- notice diff!!
+   //empty pets2 :(
+   pets2.clear();
+   console.log("elements in pets2:", pets2.size); //confirm
+   //pets2 has officially been emptied
 }
 
 /**
@@ -402,44 +442,4 @@ function queueTester(){
    testQueue.enqueue("ho");
    console.log("toString after enqueueing hi, hooray, ho:\n",
       testQueue.toString());
-}
-
-/**
- * Sebastien Guillotin
- * function to hold the setup() code for all
- * Set actions - copied from my class notes
- * these notes shouldn't have gaps
- * started - SG
- */
-function setTester(){
-   let set = new Set();
-   pets = new Set(["harry", "radar", 42, 13, 107]);
-   pets.add(45);
-   pets.add(45);
-   pets.add(45);   //only adds one 45- no dupes in sets
-   console.log("pets", pets);
-   //does pets contain radar?
-   console.log("pets.has('radar')?", pets.has("radar")); //should return true
-   //remove 45 from pets
-   // pets.delete(45);
-   //use .delete with console.log to confirm if the value was deleted AND
-   //delete it at the same time
-   console.log("deleted?", pets.delete(45));
-   let petsArr = Array.from(pets); //create an array (allows dupes) from the pets set
-   console.log("petsArr", petsArr);
-
-   //create a new pets set with the same elements/contents
-   let pets2 = new Set(Array.from(pets));
-   console.log("new set (pets2):")
-   for(let item of pets2){ //loop over each item in Set
-      console.log(" ", item); //print the item to the console
-   }
-
-   //how many elements in pets2?
-   console.log("elements in pets2:", pets2.size);
-   //.size or .length- notice diff!!
-   //empty pets2 :(
-   pets2.clear();
-   console.log("elements in pets2:", pets2.size); //confirm
-   //pets2 has officially been emptied
 }
