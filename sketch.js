@@ -14,14 +14,15 @@
  * 
  * TODO: use functions to break up all this testing mess
  * 
- * Work structure: Autumn will take Arrays,
- * Sébastien will start with Objects columns
- * alternate columns.
+ * Work structure:
+ * Autumn- Array, Map, Iterator, DIY Queue
+ * Sébastien- Object, Set, and DIY Stack
  */
 
 "use strict"; //catch some common coding errors
 
 /* Global variables */
+//Sébastien's Variables <3
 //objects
 let e30Test = {};
 //for reference, the BMW e30 is a sports car model
@@ -32,8 +33,7 @@ let e30 = {Cylinders : "4 or 6", Seating : "4-door or 2-door",
 //maps:
 const sayMap = new Map();
 //sets:
-let newSet;
-let set;
+let pets;
 
 //AUTUMN VARIABLES
 //init array variable
@@ -49,10 +49,12 @@ let iterator;
 function setup() {
    createCanvas(400, 400);
    
+   setTester();
 }
 
 
 /**
+ * Sebastien Guillotin
  * function to hold the setup() code for all
  * Object actions
  * done! -SG
@@ -63,7 +65,7 @@ function objectTester(){
    console.log(e30.Tires);
    console.log("e30['Color of Trim']: ", e30["Color of Trim"]);
    console.log(e30["Tires"]);
-   console.log("e30.ColorofTrim: ", e30.ColorofTrim); //notice how "Tires" is a one-word string that can be
+   console.log("e30.ColorofTrim (should be undefined): ", e30.ColorofTrim); //notice how "Tires" is a one-word string that can be
    //refernced using dot or [] notation, but because color of trim uses a reserve word "of"
    //and, more importantly, because color of trim is not one word and uses spaces,
    //color of trim must be referenced using [] bracket notation -SG
@@ -78,9 +80,9 @@ function objectTester(){
    //"" for strings > 1 word in . notation
    //what about non-string keys? -just curious
    delete e30.Tires;
-   console.log("Tires property removed?", e30.Tires);
+   console.log("Tires property removed? (undefined means yes!)", e30.Tires);
    delete e30["Color of Trim"];
-   console.log("Trim property removed?", e30["Color of Trim"]);
+   console.log("Trim property removed? (undefined means yes!)", e30["Color of Trim"]);
    //both properties have been removed from the car
 
    let e30Arr = Object.entries(e30);
@@ -404,63 +406,41 @@ function queueTester(){
 }
 
 /**
+ * Sebastien Guillotin
  * function to hold the setup() code for all
  * Set actions - copied from my class notes
  * these notes shouldn't have gaps
+ * started - SG
  */
 function setTester(){
-   newSet = new Set(["toonces", "radar", 42, 13, 107]);
-   console.log("newSet:", newSet.entries());
-   newSet.add(45);
-   newSet.add(45);
-   newSet.add(45);   //only adds one 45- no dupes in sets
-   console.log("newSet:", newSet.values());
+   let set = new Set();
+   pets = new Set(["harry", "radar", 42, 13, 107]);
+   pets.add(45);
+   pets.add(45);
+   pets.add(45);   //only adds one 45- no dupes in sets
+   console.log("pets", pets);
+   //does pets contain radar?
+   console.log("pets.has('radar')?", pets.has("radar")); //should return true
+   //remove 45 from pets
+   // pets.delete(45);
+   //use .delete with console.log to confirm if the value was deleted AND
+   //delete it at the same time
+   console.log("deleted?", pets.delete(45));
+   let petsArr = Array.from(pets); //create an array (allows dupes) from the pets set
+   console.log("petsArr", petsArr);
 
-
-   /**
-    * challenge 1
-    */
-   set = new Set();
-   array = new Array();
-
-   while(set.size < 20){
-      let randInt = round(random(20));
-      set.add(randInt);
-      array.push(randInt);
+   //create a new pets set with the same elements/contents
+   let pets2 = new Set(Array.from(pets));
+   console.log("new set (pets2):")
+   for(let item of pets2){ //loop over each item in Set
+      console.log(" ", item); //print the item to the console
    }
 
-   //print contents of both
-   console.log("set", set);
-   console.log("array", array);
-   
-   //safely clear both data structures
-   set.clear();
-   array.splice(0);
-
-   //print contents of both again
-   console.log("set", set);
-   console.log("array", array);
-
-
-   //Resumed from after break!
-   //9-1, 3/17/25
-   const sentence = "\"I wrote myself in, " +
-      "since I'm me and I'm here and " + 
-      "I'm writing.\" -OB";
-      //declare a sentence as a string
-
-   //loop over every char in string:
-   for(let char of sentence){
-      text(char, random(0, width-20), random(20, height));
-   }
-
-
-   //set challenge 2
-   let wombatNews = "Wombats are furry, nocturnal marsupials found only in Australia. Baby wombats have recently been in the news after an American influencer filmed herself snatching a young joey from its mother, setting off a global conversation about mistreatment of wildlife. Wild animals are cute -- but please don’t touch, for your sake and theirs."
-   let splitWombat = wombatNews.split(" ");
-   //assign a new set using the array as an argument
-   let wombatSet = new Set(splitWombat);
-
-   //print the array and the Set
-   console.log("splitWombat", splitWombat, "\nwombatSet", wombatSet);
+   //how many elements in pets2?
+   console.log("elements in pets2:", pets2.size);
+   //.size or .length- notice diff!!
+   //empty pets2 :(
+   pets2.clear();
+   console.log("elements in pets2:", pets2.size); //confirm
+   //pets2 has officially been emptied
 }
