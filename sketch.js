@@ -52,7 +52,6 @@ let iterator;
 function setup() {
    createCanvas(400, 400);
    
-   setTester();
 }
 
 
@@ -135,16 +134,29 @@ function arrayTester(){
  * Object actions
  */
 function objectTester(){
+   //Create/construct empty
+   e30Test = {};
+
+   //Create/construct with contents
+   //for reference, the BMW e30 is a sports car model
+   e30 = {Cylinders : "4 or 6", Seating : "4-door or 2-door",
+   Drivetrain : "AWD", "Production years" : "1982-1994",
+   "Can be Convertible" : true, "Number of wheels" : 4};
+
+   //Set/add value
    e30.Tires = "Summer tires";
    e30["Color of Trim"] = "Puke Green";
+
+   //Retrieve value
    console.log(e30.Tires);
    console.log("e30['Color of Trim']: ", e30["Color of Trim"]);
    console.log(e30["Tires"]);
    console.log("e30.ColorofTrim (should be undefined): ", e30.ColorofTrim); //notice how "Tires" is a one-word string that can be
-   //refernced using dot or [] notation, but because color of trim uses a reserve word "of"
+   //referenced using dot or [] notation, but because color of trim uses a reserve word "of"
    //and, more importantly, because color of trim is not one word and uses spaces,
    //color of trim must be referenced using [] bracket notation -SG
    
+   //Item included?
    //test if some of the values/properties are defined or not
    console.log(e30.Cylinders !== undefined); //checking IS DEFINED
    //check if propterty/item is included in object properties
@@ -154,21 +166,30 @@ function objectTester(){
    //"" always for [] notation
    //"" for strings > 1 word in . notation
    //what about non-string keys? -just curious
+
+   //Remove item
    delete e30.Tires;
    console.log("Tires property removed? (undefined means yes!)", e30.Tires);
    delete e30["Color of Trim"];
    console.log("Trim property removed? (undefined means yes!)", e30["Color of Trim"]);
    //both properties have been removed from the car
 
+   //Iterator or array of entries
    let e30Arr = Object.entries(e30);
    //stores the array of all key:value pairs of e30 (returned by Obj.entries())
    //Object.entries returns an array
    console.log("e30Arr:", e30Arr);
    console.log(Object.entries(e30));
    //notice how these are the same array
+
+   //Iterator or array of keys
    //print all properties of e30
    console.log("Properties of e30:", Object.keys(e30));
+
+   //Iterator or array of values
    console.log("Values of e30:", Object.values(e30));
+
+   //Copy all to fresh address
    //copy everything about e30 to a new address, m3
    let m3 = {};
    for(let pair in e30){  //looping through each key:value pair?
@@ -180,16 +201,19 @@ function objectTester(){
    }
    //console.log("m3:", m3); //created successfully!
 
+   //Loop over all
    //loop over all pairs in m3
    console.log("All pairs in m3:");
    for(let pair in m3){
       console.log(" ", pair +" : "+ m3[pair]); //print key:value pair to console
    }
 
+   //How many?
    //how many properties in m3?
    //find length of array of kay:value pairs
    console.log("Number of properties stored by m3:", Object.entries(m3).length);
 
+   //Empty all contents
    //empty m3 object of all contents
    //scrap the m3 (remove all property:value pairs)
    for(let pair in m3){  //for every pair
