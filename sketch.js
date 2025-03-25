@@ -34,8 +34,14 @@ const sayMap = new Map();
 //sets:
 let newSet;
 let set;
-let array;
 
+//AUTUMN VARIABLES
+//init array variable
+let creatureArray;
+//init map variable
+let ageMap;
+//iterator
+let iterator;
 
 /**
  * setup: run all tester functions here
@@ -116,11 +122,147 @@ function objectTester(){
 }
 
 /**
- * function to hold the setup() code for all
- * Array actions
+ * Autumn Fischer
+ * ARRAY FUNCTIONS AND METHODS TESTING
  */
 function arrayTester(){
+   console.log("**ARRAY TESTING**");
 
+   //Create/ construct empty
+   creatureArray = [];
+   console.log("Created empty array:", creatureArray);
+
+   //Create/ construct with contents
+   creatureArray = ["crab", "fish", "cow", "turtle", "stingray", "tiger", "frog"];
+   console.log("Filled the array with creatures:", creatureArray);
+
+   //Set/ add value
+   creatureArray[1] = "dog";
+   console.log("Set the second item (index 1) to dog:", creatureArray);
+
+   creatureArray.push("duck");
+   console.log("Added a duck to the end of the array:", creatureArray);
+
+   creatureArray.unshift("t-rex", "octopus");
+   console.log("Added a t-rex and an octopus to the beginning of the array:", creatureArray);
+
+   creatureArray.splice(6, 0, "goat", "bunny");
+   console.log("Added a goat and a bunny at index 6 of the array:", creatureArray);
+
+   //Retrieve value 
+   let animal = creatureArray[4];
+   console.log("Retrived the fifth item (index 4):", animal);
+
+   //Item included?
+   let animalBool = creatureArray.includes("turtle");
+   console.log("Testing to see if the array includes the animal 'turtle':", animalBool);
+
+   //Remove item
+   let removeCreature = creatureArray.pop();
+   console.log("Removed the last item of the array:", removeCreature, creatureArray);
+
+   let removeAnimal = creatureArray.shift();
+   console.log("Removed the first item of the array:", removeAnimal, creatureArray);
+
+   creatureArray.splice(3, 2);
+   console.log("Removed two items starting at index 3", creatureArray);
+
+   //Copy all to fresh address
+   let newArray = animalArray.slice();
+   console.log("Slice the array to a new variable:", newArray);
+
+   let evenNewerArray = Array.from(newArray);
+   console.log("Array.from to use a new variable name:", evenNewerArray);
+
+   //Loop over all
+   console.log("For loop to iterate:");
+   for(let i=0; i<creatureArray.length; i++){
+      console.log(creatureArray[i]);
+   }
+
+   console.log("For of loop to iterate:");
+   for(let creature of creatureArray){
+      console.log(creature);
+   }
+
+   //How many?
+   let arrayLength = creatureArray.length;
+   console.log("Array Length:", arrayLength);
+
+   //Empty all contents
+   creatureArray.splice(0);
+   console.log("Empty the array:", creatureArray);
+}
+
+/**
+ Autumn Fischer
+ MAP FUNCTIONS AND METHODS TESTING
+ */
+function mapTester(){
+   console.log("**MAP TESTING**");
+
+   //Create/ construct empty
+   ageMap = new Map();
+   console.log("Created empty map:", ageMap);
+
+   //Create/ construct with contents
+   ageMap = new Map([["Geroge", 47], ["Layla", 16], ["Jeremy", 39], ["Elizabeth", 26], ["Gertrude", 73], ["Keith", 55]]);
+   console.log("Filled the map with name and age pairs:", ageMap);
+
+   //Set/ add value
+   ageMap.set("Layla", 17);
+   console.log("Set Layla's age to 17:", ageMap);
+
+   //Retrieve value
+   let jeremyAge = ageMap.get("Jeremy");
+   console.log("Retrieve Jeremy's age:", jeremyAge);  
+
+   //Item included?
+   let bobBool = ageMap.has("Bob");
+   console.log("Testing to see if 'Bob' is included as a key in the map:", bobBool);  
+
+   //Remove item
+   ageMap.delete("Gertrude");
+   console.log("Delete 'Gertrude' from the map:", ageMap);  
+
+   //Iterator or array of entries
+   let mapIt = ageMap.entries();
+   console.log("Map Entries:", mapIt);
+
+   //Iterator or array of keys
+   mapIt = ageMap.keys();
+   console.log("Map Keys:", mapIt);
+
+   //Iterator or array of values
+   mapIt = ageMap.values();
+   console.log("Map Values:", mapIt);
+
+   //Array.from
+   let mapArray = Array.from(ageMap);
+   console.log("Array from the age map:", mapArray);
+
+   //Copy all to fresh address
+   let newMap = new Map(Array.from(ageMap));
+   console.log("Copy the values into a new variable:", newMap);
+
+   //Loop over all
+   console.log("For loop to iterate:");
+   for(let [k, v] of ageMap){
+      console.log(k, v);
+   }
+
+   console.log("For of loop to iterate:");
+   for(let entry of ageMap){
+      console.log(entry);
+   }
+
+   //How many?
+   let mapSize = ageMap.size;
+   console.log("Map length:", mapSize);
+
+   //Empty all contents
+   ageMap.clear();
+   console.log("Empty the map:", ageMap);
 }
 
 /**
@@ -259,55 +401,6 @@ function queueTester(){
    testQueue.enqueue("ho");
    console.log("toString after enqueueing hi, hooray, ho:\n",
       testQueue.toString());
-}
-
-/**
- * function to hold the setup() code for all
- * Map actions - copied from my INCOMPLETE
- * class notes
- */
-function mapTester(){
-   //create an object literal storing the cast pairs
-   //role : actor
-   //key : value
-   const cmcCast = { //catch me if you can
-      "Frank Abagnale, Jr.": "Leonardo DiCaprio",
-      "Carl Hanratty": "Tom Hanks",
-      "Frank Abagnale, Sr.": "Christopher Walken",
-      "Roger Strong": "Martin Sheen",
-      "Marci": "Ellen Pompeo"
-   };
-
-   //create Map from existing array of pairs
-   let cmcMap = new Map(Object.entries(cmcCast));
-   console.log("cmcMap: ", cmcMap, "sayMap:", sayMap);
-
-   //Get .keys, .values, .entries of Map
-
-
-   //slide 6
-   console.log("cmcMap.get('Carl Hanratty')");
-      //.get(key: string)  ->  use key as a string
-   console.log(cmcMap.get("Carl Hanratty"));
-
-
-   /**
-    * challenge 1
-    * create map for 4 temp based activities
-   */
-   //const map1 = new Map([key, value]);
-   //[[pair1], [pair2], [pairN]]
-   const funMap = new Map([[60, 'Basketball'], [30, "Eating Snowflakes"],
-      [90, "Swimming"], [0, "Staying Inside"], ["Celsius Version", "32 is now 0!"]]);
-   // funMap.set(60, 'Basketball'); //key, value
-   console.log("funMap", funMap);
-   //incoplete- get 'em next time
-
-
-   /**
-    * challenge 2
-    */
-   //also get them next time lmao
 }
 
 /**
