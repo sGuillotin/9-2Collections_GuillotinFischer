@@ -49,7 +49,6 @@ let iterator;
 function setup() {
    createCanvas(400, 400);
    
-   setTester();
 }
 
 
