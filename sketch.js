@@ -24,14 +24,8 @@
 /* Global variables */
 //Sébastien's Variables <3
 //objects
-let e30Test = {};
-//for reference, the BMW e30 is a sports car model
-let e30 = {Cylinders : "4 or 6", Seating : "4-door or 2-door",
-   Drivetrain : "AWD", "Production years" : "1982-1994",
-   "Can be Convertible" : true, "Number of wheels" : 4};
-   //properties can be declared with or without ""
-//maps:
-const sayMap = new Map();
+let e30Test;
+let e30;
 //sets:
 let pets;
 //stacks
@@ -142,6 +136,7 @@ function objectTester(){
    e30 = {Cylinders : "4 or 6", Seating : "4-door or 2-door",
    Drivetrain : "AWD", "Production years" : "1982-1994",
    "Can be Convertible" : true, "Number of wheels" : 4};
+      //properties can be declared with or without ""
 
    //Set/add value
    e30.Tires = "Summer tires";
