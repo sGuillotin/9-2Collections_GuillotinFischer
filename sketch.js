@@ -16,7 +16,7 @@
  * 
  * Work structure:
  * Autumn- Array, Map, Iterator, DIY Queue
- * Sébastien- Object, Set, and DIY Stack
+ * Sébastien- Object(X), Set(X), and DIY Stack
  */
 
 "use strict"; //catch some common coding errors
