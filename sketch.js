@@ -22,6 +22,13 @@
 "use strict"; //catch some common coding errors
 
 /* Global variables */
+//objects
+let e30Test = {};
+//for reference, the BMW e30 is a sports car model
+let e30 = {Cylinders : "4 or 6", Seating : "4-door or 2-door",
+   Drivetrain : "AWD", "Production years" : "1982-1994",
+   "Can be Convertible" : true, "Number of wheels" : 4};
+   //properties can be declared with or without ""
 //maps:
 const sayMap = new Map();
 //sets:
@@ -41,10 +48,77 @@ let iterator;
  */
 function setup() {
    createCanvas(400, 400);
+   
+}
 
-   arrayTester();
 
-   mapTester();
+/**
+ * function to hold the setup() code for all
+ * Object actions
+ * done! -SG
+ */
+function objectTester(){
+   e30.Tires = "Summer tires";
+   e30["Color of Trim"] = "Puke Green";
+   console.log(e30.Tires);
+   console.log("e30['Color of Trim']: ", e30["Color of Trim"]);
+   console.log(e30["Tires"]);
+   console.log("e30.ColorofTrim: ", e30.ColorofTrim); //notice how "Tires" is a one-word string that can be
+   //refernced using dot or [] notation, but because color of trim uses a reserve word "of"
+   //and, more importantly, because color of trim is not one word and uses spaces,
+   //color of trim must be referenced using [] bracket notation -SG
+   
+   //test if some of the values/properties are defined or not
+   console.log(e30.Cylinders !== undefined); //checking IS DEFINED
+   //check if propterty/item is included in object properties
+   // let testBool = e30.Cylinders !== undefined;
+   console.log(e30["Tires"] !== undefined); //checking IS DEFINED
+   //note that here Tires has to be in ""
+   //"" always for [] notation
+   //"" for strings > 1 word in . notation
+   //what about non-string keys? -just curious
+   delete e30.Tires;
+   console.log("Tires property removed?", e30.Tires);
+   delete e30["Color of Trim"];
+   console.log("Trim property removed?", e30["Color of Trim"]);
+   //both properties have been removed from the car
+
+   let e30Arr = Object.entries(e30);
+   //stores the array of all key:value pairs of e30 (returned by Obj.entries())
+   //Object.entries returns an array
+   console.log("e30Arr:", e30Arr);
+   console.log(Object.entries(e30));
+   //notice how these are the same array
+   //print all properties of e30
+   console.log("Properties of e30:", Object.keys(e30));
+   console.log("Values of e30:", Object.values(e30));
+   //copy everything about e30 to a new address, m3
+   let m3 = {};
+   for(let pair in e30){  //looping through each key:value pair?
+      // console.log(e30[pair]); //value
+      // console.log("pair", pair); //property (key)
+      m3[pair] = e30[pair]; //copies each key/value pair to m3
+      //any add'tl declarations? (i.e. m3 = new etc...)
+      //just need let m3 = {}; outside of loop
+   }
+   //console.log("m3:", m3); //created successfully!
+
+   //loop over all pairs in m3
+   console.log("All pairs in m3:");
+   for(let pair in m3){
+      console.log(" ", pair +" : "+ m3[pair]); //print key:value pair to console
+   }
+
+   //how many properties in m3?
+   //find length of array of kay:value pairs
+   console.log("Number of properties stored by m3:", Object.entries(m3).length);
+
+   //empty m3 object of all contents
+   //scrap the m3 (remove all property:value pairs)
+   for(let pair in m3){  //for every pair
+      delete m3[pair];  //deletes the property (related value no longer stored either)
+   }
+   console.log("m3 empty?", m3); //m3 has been scrapped
 }
 
 /**
