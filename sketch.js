@@ -37,8 +37,8 @@ let clothesStack;
 let creatureArray;
 //init map variable
 let ageMap;
-//iterator
-let iterator;
+//init queue variable
+let musicQueue;
 
 /**
  * setup: run all tester functions here
@@ -48,7 +48,6 @@ function setup() {
    
 }
 
-
 /**
  * Autumn Fischer
  * ARRAY FUNCTIONS AND METHODS TESTING
@@ -56,15 +55,15 @@ function setup() {
 function arrayTester(){
    console.log("**ARRAY TESTING**");
 
-   //Create/ construct empty
+   //Create/construct empty
    creatureArray = [];
    console.log("Created empty array:", creatureArray);
 
-   //Create/ construct with contents
+   //Create/construct with contents
    creatureArray = ["crab", "fish", "cow", "turtle", "stingray", "tiger", "frog"];
    console.log("Filled the array with creatures:", creatureArray);
 
-   //Set/ add value
+   //Set/add value
    creatureArray[1] = "dog";
    console.log("Set the second item (index 1) to dog:", creatureArray);
 
@@ -96,7 +95,7 @@ function arrayTester(){
    console.log("Removed two items starting at index 3", creatureArray);
 
    //Copy all to fresh address
-   let newArray = animalArray.slice();
+   let newArray = creatureArray.slice();
    console.log("Slice the array to a new variable:", newArray);
 
    let evenNewerArray = Array.from(newArray);
@@ -128,6 +127,8 @@ function arrayTester(){
  * Object actions
  */
 function objectTester(){
+   console.log("**Object Testing!**");
+  
    //Create/construct empty
    e30Test = {};
 
@@ -224,15 +225,15 @@ function objectTester(){
 function mapTester(){
    console.log("**MAP TESTING**");
 
-   //Create/ construct empty
+   //Create/construct empty
    ageMap = new Map();
    console.log("Created empty map:", ageMap);
 
-   //Create/ construct with contents
+   //Create/construct with contents
    ageMap = new Map([["Geroge", 47], ["Layla", 16], ["Jeremy", 39], ["Elizabeth", 26], ["Gertrude", 73], ["Keith", 55]]);
    console.log("Filled the map with name and age pairs:", ageMap);
 
-   //Set/ add value
+   //Set/add value
    ageMap.set("Layla", 17);
    console.log("Set Layla's age to 17:", ageMap);
 
@@ -259,6 +260,20 @@ function mapTester(){
    //Iterator or array of values
    mapIt = ageMap.values();
    console.log("Map Values:", mapIt);
+
+   console.log("**BRIEF INTERMISSION FOR ITERATOR TESTING");
+
+   //Array.from
+   let array = Array.from(mapIt);
+   console.log("Array from map iterator:", array);
+
+   //Loop over all
+   console.log("Iterate over iterator array:");
+   for(let item of array){
+      console.log(item);
+   }
+
+   console.log("**MORE MAP TESTING**");
 
    //Array.from
    let mapArray = Array.from(ageMap);
@@ -289,11 +304,13 @@ function mapTester(){
 }
 
 /**
- * Sebastien Guillotin
+ * Sébastien Guillotin
  * function to hold the setup() code for all
  * Set actions
  */
 function setTester(){
+   console.log("**Set Testing!**");
+  
    //Create/construct empty
    let set = new Set();
 
@@ -387,67 +404,41 @@ function stackTester(){
 }
 
 /**
- * function to hold the setup() code for all
- * Queue actions
+ * Autumn Fischer
+ * QUEUE FUNCTIONS AND METHODS TESTING
  */
 function queueTester(){
-   let testQueue = new Queue();  //wait, why don't we always do this?
-   console.log("empty Queue?", testQueue);
-   testQueue = new Queue([3,4, 5,6,78]); //how does this affect
-   // first instance of testQueue?
-   // references vs addresses...?
-   console.log("num Queue?", testQueue);
-   //destructive?
-   const testArr = [4,5,6]; //make an arr that is its own var
-   const safeQueue = new Queue(testArr); //make a Queue from this array
-   //dequeue a val from safe Queue
-   safeQueue.dequeue();
-   console.log("testArr", testArr, "\nsafeQueue", safeQueue);
-   //testArr is safe! nice
+   console.log("**QUEUE TESTING**");
 
-   //test .dequeue
-   console.log("testQueue.size", testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
+   //Create/construct empty
+   musicQueue = new Queue();
+   console.log("Created empty queue:", musicQueue);
 
-   //test .enqueue
-   testQueue.enqueue("hey");
-   console.log(testQueue, testQueue.size);
-   testQueue.enqueue("ho");
-   console.log(testQueue, testQueue.size);
-   testQueue.enqueue("hooray");
-   console.log(testQueue, testQueue.size);
-   console.log("dequeue Queue", testQueue.dequeue(), testQueue.size);
+   //Create/construct with contents
+   musicQueue = new Queue(["Too Sweet", "Sweet Child O' Mine", "Back in Black", "Modern Day Cain", "Mad IQs", "Feel Good Inc."]);
+   console.log("Filled the queue with song names: "+ musicQueue);
 
-   //test .peek
-   testQueue.enqueue("howdy");
-   console.log("enqueueed hody. peek?", testQueue.peek());
-   //dequeue everything from testQueue-
-   //no probs with empty Queue?
-   testQueue.clear();
-   console.log("empty Queue peek?", testQueue.peek());
+   //Set/add value
+   musicQueue.enqueue("Are You Gonna Be My Girl");
+   console.log("Added a song to the queue:", musicQueue);
 
-   //test .includes
-   //false if not included?
-   console.log("testQueue.includes('45')", testQueue.includes("45"));
-   console.log("enqueueing hi, hooray, ho (separately)");
-   // testQueue.enqueue("hi", "hooray, "ho");
-   testQueue.enqueue("hi");
-   testQueue.enqueue("hooray");
-   testQueue.enqueue("ho");
-   console.log("enqueueed hi, hooray, ho?", testQueue);
-   console.log(".includes('hooray')", testQueue.includes("hooray"));
+   //Retrieve Value
+   let nextSong = musicQueue.peek();
+   console.log("Peek at the first item in the queue:", nextSong);
 
-   //test .clear
-   console.log("testQueue.clear()");
-   testQueue.clear();
-   console.log("cleared Queue?", testQueue);
+   //Item included?
+   let queueSong = musicQueue.includes("Too Sweet");
+   console.log("Testing to see if 'Too Sweet' is in the queue:", queueSong);
 
-   //testing toString
-   testQueue.enqueue("hi")
-   testQueue.enqueue("hooray");
-   testQueue.enqueue("ho");
-   console.log("toString after enqueueing hi, hooray, ho:\n",
-      testQueue.toString());
+   //Remove item
+   let removedSong = musicQueue.dequeue("Back in Black");
+   console.log("Removed the song", removedSong, "from the queue:", musicQueue);
+
+   //How Many?
+   let queueSize = musicQueue.size;
+   console.log("Queue length", queueSize);
+
+   //Empty all contents
+   musicQueue.clear();
+   console.log("Empty the queue:", musicQueue);
 }

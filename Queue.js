@@ -1,89 +1,77 @@
 /**
- * Sebastien Guillotin, Autumn Fischer 3/21/25
  * IGME-102: 9-2 Exercise: Collection Palooza
  * Homemade Queue class
+ *
+ * Autumn Fischer 3/25/25
+ * Queue: Uses an array and a class to make a DIY Queue
  */
 
-class Queue{
+class Queue {
     /**
      * constructor: set queue array & size
-     * properties
-     * @param {[]} qArray, default []
+     * @param {[]} inputArray, the array used for the queue
      */
-    constructor(qArray = []){  //be able to accept parameter as a starting array
-            //default to an empty array
-        //this.array = qArray;  //sets equal to THE array- stomping on the array
-        //copy og array to be model for queue/queue backbone/queuebone
-        this.array = qArray.slice();  //copy from [] (all)
-        this.size = this.array.size;
-    }
-
-
-    /**
-     * dequeue: remove item from front
-     * of queue and return it
-     * @returns {*} dequeued item
-     */
-    dequeue(){
-        let val = this.array.pop();
-        this.size = this.array.length;  //note size vs length
-            //length for 1D, size for objects??
-        return val;
-    }
-
-
-    /**
-     * enqueue: add new data to end of queue
-     * and update its size
-     * @param {*} data addition to queue
-     */
-    enqueue(data){
-        this.array.unshift(data);
+    constructor(inputArray = []) {
+        //copy the original array to be safe
+        this.array = inputArray.slice();
         this.size = this.array.length;
     }
 
+    /**
+     * dequeue: remove and return the item from the front of the queue
+     * update the length
+     * @returns {*} dequeued item
+     */
+    dequeue() {
+        let item = this.array.pop();
+        this.size = this.array.length;
+
+        return item;
+    }
 
     /**
-     * peek: return item at front of queue 
-     * (or undefined if empty)
-     * @returns {*} item at front of queue (or undefined)
+     * enqueue: add a new item to the end of the queue
+     * update the length
+     * @param {*} object enqueued item
      */
-    peek(){
-        //array[index] last item in array
+    enqueue(object) {
+        this.array.unshift(object);
+        this.size = this.array.length;
+    }
+
+    /**
+     * peek: gives the item from the front of the queue
+     * returns undefined if the queue is empty
+     * @returns {*} item at the front of the queue
+     */
+    peek() {
+        //get last item in array
         return this.array[this.array.length - 1];
     }
 
-
     /**
-     * includes: return whether given item
-     * is in the queue
-     * @param {*} item item to search for
-     * @returns {boolean} true if present
+     * includes: determines whether an item is in the queue
+     * @param {*} inQueue item you are searching for
+     * @returns {boolean} true if the item is in the queue, false otherwise
      */
-    includes(item){
-        return this.array.includes(item);
+    includes(inQueue) {
+        return this.array.includes(inQueue);
     }
 
-
     /**
-     * clear: empty queue array &
-     * update size
+     * clear: empty the queue
+     * update the length
      */
     clear() {
         this.array.splice(0);
         this.size = this.array.length;
     }
 
-
     /**
-     * toString: returns string of size & array contents as one
-     * prints contents as comma separated list
-     *      - connect with .split() possible?
-     * @returns {string} array size + array
-     * contents of string
+     * toString: returns a string containing the length and contents of the queue
+     * @returns {string} string of the size and the items in the queue
      */
-    toString(){
-        return "("+ this.size + ") {" + this.array.toString() + "}";
-        //plain version: return this.array.toString();
+    toString() {
+        return "("+ this.size + "){" + this.array.toString() + "}";
     }
 }
