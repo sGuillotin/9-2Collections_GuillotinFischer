@@ -46,6 +46,17 @@ let musicQueue;
 function setup() {
    createCanvas(400, 400);
    
+   arrayTester();
+
+   objectTester();
+
+   mapTester();
+
+   setTester();
+
+   stackTester();
+
+   queueTester();
 }
 
 /**
@@ -261,7 +272,7 @@ function mapTester(){
    mapIt = ageMap.values();
    console.log("Map Values:", mapIt);
 
-   console.log("**BRIEF INTERMISSION FOR ITERATOR TESTING");
+   console.log("**BRIEF INTERMISSION FOR ITERATOR TESTING**");
 
    //Array.from
    let array = Array.from(mapIt);
@@ -366,7 +377,7 @@ function setTester(){
  * Stack actions
  */
 function stackTester(){
-   console.log("**STAACK TESTING**");
+   console.log("**STACK TESTING**");
 
    //Create/construct empty
    stack1 = new Stack();
